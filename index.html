@@ -113,6 +113,9 @@ input.hex-in:focus{border-color:var(--or)}
 .exp-btn{padding:8px 15px;border:1px solid var(--b2);border-radius:10px;background:var(--s2);color:var(--text);cursor:pointer;font-family:'Kumbh Sans',sans-serif;font-size:11px;font-weight:600;transition:all .14s}
 .exp-btn:hover{border-color:var(--or);background:#160800;color:var(--or)}
 #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(50px);background:var(--s3);border:1px solid var(--b2);color:var(--text);font-size:11px;font-weight:500;padding:8px 16px;border-radius:20px;opacity:0;transition:all .25s;pointer-events:none;z-index:999}
+
+/* ── MOBILE TONAL BAR — hidden on desktop, shown on mobile only ── */
+#mobile-tonal-bar{display:none}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ════ TABLET (≤1024px) ════ */
@@ -127,6 +130,21 @@ input.hex-in:focus{border-color:var(--or)}
 @media (max-width:640px){
   html,body{font-size:14px}
   .shell{height:auto;min-height:100vh}
+  /* sticky tonal bar — always visible while scrolling */
+  #mobile-tonal-bar{
+    display:flex;flex-direction:column;gap:12px;
+    position:sticky;top:0;z-index:50;
+    background:rgba(12,12,14,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--b1);
+    padding:14px 16px 18px;box-sizing:border-box;
+  }
+  #mtb-zones{display:flex;gap:10px}
+  .mtb-zone{flex:1;display:flex;flex-direction:column;gap:7px;min-width:0}
+  .mtb-zone-bars{display:flex;height:42px;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 1px 6px rgba(0,0,0,.35)}
+  .mtb-zone-col,.mtb-zone-mono{flex:1;transition:background .15s}
+  .mtb-zone-name{font-family:'Kumbh Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.7px;text-align:center;color:#9a9aa2;text-transform:uppercase;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #mtb-scale{height:10px;border-radius:5px;background:linear-gradient(to right,#000,#fff);position:relative;margin:4px 6px 0}
+  .mtb-dot{position:absolute;top:50%;width:17px;height:17px;border-radius:50%;transform:translate(-50%,-50%);border:2.5px solid;box-shadow:0 0 0 2px #0c0c0e;transition:left .18s ease,background .15s}
   /* stack: sidebar on top, main below — single column */
   .body{display:flex;flex-direction:column;height:auto;overflow:visible}
   .left{
@@ -184,6 +202,25 @@ input.hex-in:focus{border-color:var(--or)}
 </head>
 <body>
 <div class="shell">
+
+<!-- ══ MOBILE TONAL BAR (sticky, mobile only) ══ -->
+<div id="mobile-tonal-bar">
+  <div id="mtb-zones">
+    <div class="mtb-zone" data-k="shadow">
+      <div class="mtb-zone-bars"><div class="mtb-zone-col"></div><div class="mtb-zone-mono"></div></div>
+      <div class="mtb-zone-name">Sombra</div>
+    </div>
+    <div class="mtb-zone" data-k="mid">
+      <div class="mtb-zone-bars"><div class="mtb-zone-col"></div><div class="mtb-zone-mono"></div></div>
+      <div class="mtb-zone-name">Tono Medio</div>
+    </div>
+    <div class="mtb-zone" data-k="light">
+      <div class="mtb-zone-bars"><div class="mtb-zone-col"></div><div class="mtb-zone-mono"></div></div>
+      <div class="mtb-zone-name">Luz</div>
+    </div>
+  </div>
+  <div id="mtb-scale"></div>
+</div>
 
 <div class="body">
 <!-- ══ LEFT ══ -->
@@ -498,6 +535,7 @@ function syncAll(){
   renderTonalCheck();
   renderTempGrid();
   renderPalette();
+  renderMobileTonalBar();
 }
 
 /* ══ HARMONY ══ */
@@ -658,16 +696,41 @@ function liveEdit(zKey,prop,val){
   renderTonalCheck();
   patchTempRow(zKey);  /* live-update P4 swatches for this zone */
   renderPalette();
+  renderMobileTonalBar();
 }
 
 function resetZone(zKey){
   const zd=ZONE_DEFS.find(z=>z.key===zKey);
   ev[zKey]={h:H,s:S,l:zd.lTarget};
-  renderZones();renderTonalCheck();renderTempGrid();renderPalette();
+  renderZones();renderTonalCheck();renderTempGrid();renderPalette();renderMobileTonalBar();
   toast(zd.name+' reseteada');
 }
 
 /* ══ TONAL CHECK (Paso 3) ══ */
+function renderMobileTonalBar(){
+  const bar=document.getElementById('mobile-tonal-bar');
+  if(!bar)return;
+  const dotColors={shadow:'#ff9944',mid:'#3dffd4',light:'#aaa8ff'};
+  ['shadow','mid','light'].forEach(k=>{
+    const z=ev[k];
+    const zhex=hsl2hex(z.h,z.s,z.l);
+    const node=bar.querySelector('.mtb-zone[data-k="'+k+'"]');
+    if(node){
+      const col=node.querySelector('.mtb-zone-col');
+      const mono=node.querySelector('.mtb-zone-mono');
+      if(col)col.style.background=zhex;
+      if(mono)mono.style.background=gray(zhex);
+    }
+  });
+  const scale=document.getElementById('mtb-scale');
+  if(scale){
+    scale.innerHTML=['shadow','mid','light'].map(k=>{
+      const z=ev[k];const zhex=hsl2hex(z.h,z.s,z.l);const pct=clamp(lumPct(zhex),2,98);
+      return `<div class="mtb-dot" style="left:${pct}%;background:${zhex};border-color:${dotColors[k]}"></div>`;
+    }).join('');
+  }
+}
+
 function renderTonalCheck(){
   const cont=document.getElementById('tonal-check');
   if(!cont)return;
