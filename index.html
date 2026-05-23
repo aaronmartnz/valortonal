@@ -114,16 +114,38 @@ input.hex-in:focus{border-color:var(--or)}
 .exp-btn:hover{border-color:var(--or);background:#160800;color:var(--or)}
 #toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(50px);background:var(--s3);border:1px solid var(--b2);color:var(--text);font-size:11px;font-weight:500;padding:8px 16px;border-radius:20px;opacity:0;transition:all .25s;pointer-events:none;z-index:999}
 
-/* ── MOBILE TONAL BAR — hidden on desktop, shown on mobile only ── */
+/* ── MOBILE TONAL BAR — hidden on desktop, shown on tablet/mobile ── */
 #mobile-tonal-bar{display:none}
+
+/* on desktop, push the picker to fill the sidebar so harmony sticks to bottom */
+@media (min-width:1025px){
+  .picker-wrap{flex:1;min-height:0}
+}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ════ TABLET (≤1024px) ════ */
 @media (max-width:1024px){
+  /* shell: bar takes auto height, body fills the rest */
+  .shell{grid-template-rows:auto 1fr}
   .body{grid-template-columns:240px 1fr}
   .left{padding:18px 16px;gap:16px}
   .main{padding:18px;gap:12px;grid-template-columns:1fr;align-content:start}
   .tone-cards{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  /* sticky tonal bar: also visible on tablet (where the layout scrolls) */
+  #mobile-tonal-bar{
+    display:flex;flex-direction:column;gap:10px;
+    position:sticky;top:0;z-index:50;
+    background:rgba(12,12,14,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--b1);
+    padding:12px 18px 14px;box-sizing:border-box;
+  }
+  #mtb-zones{display:flex;gap:10px}
+  .mtb-zone{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+  .mtb-zone-bars{display:flex;height:36px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 1px 5px rgba(0,0,0,.3)}
+  .mtb-zone-col,.mtb-zone-mono{flex:1;transition:background .15s}
+  .mtb-zone-name{font-family:'Kumbh Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:.6px;text-align:center;color:#9a9aa2;text-transform:uppercase;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #mtb-scale{height:9px;border-radius:5px;background:linear-gradient(to right,#000,#fff);position:relative;margin:3px 6px 0}
+  .mtb-dot{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);border:2.5px solid;box-shadow:0 0 0 2px #0c0c0e;transition:left .18s ease,background .15s}
 }
 
 /* ════ MOBILE (≤640px) ════ */
@@ -235,9 +257,8 @@ input.hex-in:focus{border-color:var(--or)}
   <div style="flex-shrink:0;background:#fff;border-radius:999px;padding:8px;margin-bottom:22px;box-shadow:0 2px 16px rgba(0,0,0,.18)">
     <div id="hex-dot" style="height:44px;border-radius:999px;transition:background .2s"></div>
   </div>
-
   <!-- BIG INLINE PICKER — pill canvas + thin line bars (H · S · L) -->
-  <div style="display:flex;flex-direction:column;gap:18px;flex:1;min-height:0;margin-bottom:20px">
+  <div class="picker-wrap" style="display:flex;flex-direction:column;gap:18px;margin-bottom:20px">
 
     <!-- Top: SV canvas + 3 thin vertical bars -->
     <div class="ipk-row" style="display:flex;gap:10px;flex-shrink:0;align-items:stretch;height:240px;width:100%;box-sizing:border-box">
