@@ -45,15 +45,15 @@ input.hex-in:focus{border-color:var(--or)}
 .sv-item:hover{border-color:var(--b2)}
 
 /* ── MAIN ── */
-.main{overflow-y:auto;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+.main{overflow-y:auto;padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:center}
 .main::-webkit-scrollbar{width:3px}.main::-webkit-scrollbar-thumb{background:var(--b2)}
-.main > #paso1-bar{grid-column:1 / -1}
+.main > #paso1-bar,.main > .paso-full{grid-column:1 / -1}
 .lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#555}
 .step-num{font-family:'Kumbh Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;color:#444;text-transform:uppercase;flex-shrink:0;padding-top:2px}
-.step-title{font-family:'Archivo Black',sans-serif;font-size:14px;color:var(--text);line-height:1}
+.step-title{font-family:'Archivo Black',sans-serif;font-size:16px;color:var(--text);line-height:1}
 .step-sub{font-size:11px;color:#555;margin-top:3px;line-height:1.4;font-weight:300}
-.step-card{background:var(--s1);border:1px solid var(--b1);border-radius:18px;padding:14px 16px}
-.step-head{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+.step-card{background:var(--s1);border:1px solid var(--b1);border-radius:20px;padding:18px 20px}
+.step-head{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
 
 /* ── ZONE COLS ── */
 .zone-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
@@ -62,7 +62,7 @@ input.hex-in:focus{border-color:var(--or)}
 .zone-icon{width:26px;height:26px;border-radius:50%;margin-bottom:5px;border:2px solid rgba(255,255,255,.1);transition:background .15s}
 .zone-name{font-family:'Kumbh Sans',sans-serif;font-weight:600;font-size:13px;color:var(--text)}
 .zone-role{font-size:9px;color:#555;margin-top:1px}
-.zone-body{padding:8px 10px;flex:1;display:flex;flex-direction:column;gap:6px}
+.zone-body{padding:11px 13px;flex:1;display:flex;flex-direction:column;gap:8px}
 .zone-gen{display:flex;align-items:center;gap:6px;padding:9px 14px;border:none;background:transparent;cursor:pointer;font-family:'Kumbh Sans',sans-serif;font-size:10px;font-weight:600;color:#3a3a42;border-top:1px solid var(--b1);width:100%;transition:all .15s}
 .zone-gen:hover{background:rgba(255,85,0,.06);color:var(--or)}
 .gd{width:7px;height:7px;border-radius:50%;flex-shrink:0}
@@ -70,11 +70,11 @@ input.hex-in:focus{border-color:var(--or)}
 /* ── TONAL CHECK ── */
 .tonal-ruler{position:relative;height:10px;border-radius:5px;margin:8px 0 4px}
 .tonal-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;border:2.5px solid;box-shadow:0 0 0 2px #0c0c0e}
-.tone-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px}
-.tone-card{border-radius:14px;overflow:hidden;border:1px solid var(--b1)}
-.tone-swatches{display:flex;height:46px}
-.tone-info{padding:7px 9px;background:var(--s2)}
-.tone-lum{font-family:'Archivo Black',sans-serif;font-size:17px;color:var(--text);line-height:1}
+.tone-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.tone-card{border-radius:16px;overflow:hidden;border:1px solid var(--b1)}
+.tone-swatches{display:flex;height:78px}
+.tone-info{padding:10px 12px;background:var(--s2)}
+.tone-lum{font-family:'Archivo Black',sans-serif;font-size:20px;color:var(--text);line-height:1}
 .tone-bar-bg{height:4px;border-radius:2px;background:var(--b1);margin:5px 0 4px;position:relative}
 .tone-bar-fill{position:absolute;left:0;top:0;height:100%;border-radius:2px;transition:width .2s}
 .gap-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -88,16 +88,16 @@ input.hex-in:focus{border-color:var(--or)}
 .temp-sl-row{display:grid;grid-template-columns:72px 1fr 1fr 1fr;gap:6px;align-items:center;margin-bottom:10px}
 .temp-row{display:grid;grid-template-columns:72px 1fr 1fr 1fr;gap:6px;margin-bottom:6px;align-items:center}
 .temp-zone-label{text-align:right;padding-right:8px}
-.temp-swatch{border-radius:6px;overflow:hidden;height:36px;display:flex;cursor:pointer;border:1px solid rgba(255,255,255,.06);transition:transform .1s}
+.temp-swatch{border-radius:6px;overflow:hidden;height:60px;display:flex;cursor:pointer;border:1px solid rgba(255,255,255,.06);transition:transform .1s}
 .temp-swatch:hover{transform:scale(1.04)}
 
 /* ── PALETTE ── */
-.pal-full{display:flex;border-radius:12px;overflow:hidden;height:44px;border:1px solid var(--b1)}
+.pal-full{display:flex;border-radius:12px;overflow:hidden;height:72px;border:1px solid var(--b1)}
 .pal-sw{flex:1;cursor:pointer;position:relative;transition:flex .15s}
 .pal-sw:hover{flex:1.8}
 .pal-sw-lbl{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-size:8px;font-family:'Kumbh Sans',sans-serif;font-weight:600;white-space:nowrap;opacity:0;transition:opacity .12s;pointer-events:none}
 .pal-sw:hover .pal-sw-lbl{opacity:1}
-.prev-scene{border-radius:12px;overflow:hidden;height:60px;display:flex}
+.prev-scene{border-radius:12px;overflow:hidden;height:110px;display:flex}
 .psl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;opacity:.5}
 
 /* ── MISC ── */
@@ -119,13 +119,13 @@ input.hex-in:focus{border-color:var(--or)}
 @media (max-width:1024px){
   .body{grid-template-columns:240px 1fr}
   .left{padding:18px 16px;gap:16px}
-  .main{padding:20px}
+  .main{padding:18px;gap:12px;grid-template-columns:1fr;align-content:start}
   .tone-cards{grid-template-columns:1fr 1fr 1fr;gap:8px}
 }
 
 /* ════ MOBILE (≤640px) ════ */
 @media (max-width:640px){
-  html,body{font-size:13px}
+  html,body{font-size:14px}
   .shell{height:auto;min-height:100vh}
   /* stack: sidebar on top, main below — single column */
   .body{display:flex;flex-direction:column;height:auto;overflow:visible}
@@ -134,27 +134,43 @@ input.hex-in:focus{border-color:var(--or)}
     width:100%;max-width:none;padding:16px;gap:14px;
     overflow:visible;
   }
-  .main{padding:16px;gap:14px;overflow:visible;grid-template-columns:1fr}
+  .main{padding:16px;gap:14px;overflow:visible;grid-template-columns:1fr;align-content:start}
   /* harmony block moved to bottom on mobile via JS — style it as full-width section */
   #harmony-block{
     display:block !important;
     width:100%;padding:16px;box-sizing:border-box;
     border-top:1px solid var(--b1);
   }
-  /* picker row a bit shorter on phones */
-  #ipk-cv{}
-  .ipk-row{height:200px !important}
-  /* zone & temp grids: keep 3 cols but tighter */
-  .zone-cols{grid-template-columns:1fr 1fr 1fr;gap:5px}
-  .tone-cards{grid-template-columns:1fr 1fr 1fr;gap:5px}
-  .temp-header,.temp-sl-row,.temp-row{grid-template-columns:56px 1fr 1fr 1fr;gap:4px}
-  /* PASO 1 bar: stack hex over color bar */
-  .step-card{padding:16px}
-  /* export buttons wrap nicely */
-  .exp-row{gap:6px}
-  .exp-btn{padding:7px 12px;font-size:10px}
-  /* hide the big margin-top alignment hack on mobile (no side-by-side to align) */
-  #paso1-bar{margin-top:0 !important}
+  /* picker row: shorter, wider H/S/L bars for thumb targets */
+  .ipk-row{height:200px !important;gap:12px !important}
+  #ipk-hue,#ipk-sat,#ipk-lum{width:40px !important}
+  #ipk-hue > div:first-child,#ipk-sat-line,#ipk-lum-line{width:6px !important}
+  #ipk-ht,#ipk-st,#ipk-lt,#ipk-slc{width:28px !important;height:28px !important}
+  /* numeric inputs: bigger touch targets */
+  .left input[type=text]{font-size:18px !important}
+  /* zone cards: full width each (one per row) for finger-friendly use */
+  .zone-cols{grid-template-columns:1fr;gap:10px}
+  .tone-cards{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .tone-swatches{height:60px}
+  .temp-header,.temp-sl-row,.temp-row{grid-template-columns:56px 1fr 1fr 1fr;gap:5px}
+  .temp-swatch{height:48px}
+  .step-card{padding:14px;border-radius:16px}
+  .step-title{font-size:15px}
+  /* sliders inside zone cards: taller for finger */
+  input[type=range]{height:18px !important;padding:0}
+  input[type=range]::-webkit-slider-thumb{width:22px !important;height:22px !important}
+  /* buttons: minimum 44px touch target */
+  .btn-act,.btn-ghost{padding:12px 18px;font-size:12px;min-height:44px}
+  .exp-btn{padding:12px 14px;font-size:11px;min-height:44px}
+  .exp-row{gap:8px}
+  /* harmony rows + saved items: bigger tap target */
+  .h-row{padding:12px 14px;min-height:44px}
+  .sv-item{padding:11px 12px;min-height:44px}
+  /* tone-card and zone-col borders bigger so easier to tap swatches */
+  #paso1-bar{margin-top:0 !important;padding:14px 16px}
+  #paso1-bar > div:first-child{font-size:18px !important}
+  /* base-sw bar taller on mobile */
+  #base-sw{height:44px !important}
 }
 
 /* very small phones */
@@ -162,6 +178,7 @@ input.hex-in:focus{border-color:var(--or)}
   .zone-cols,.tone-cards{grid-template-columns:1fr 1fr 1fr;gap:4px}
   .main{padding:12px}
   .left{padding:12px}
+  .temp-header,.temp-sl-row,.temp-row{grid-template-columns:44px 1fr 1fr 1fr;gap:3px}
 }
 </style>
 </head>
@@ -216,40 +233,40 @@ input.hex-in:focus{border-color:var(--or)}
 
     <!-- HSL readout below -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex-shrink:0">
-      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:6px 4px;text-align:center">
+      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:11px 4px;text-align:center">
         <input id="iv-h" type="text" inputmode="numeric" value="210" data-prop="h" style="width:100%;background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center">
         <div style="font-size:9px;color:#cfcfcf;text-transform:uppercase;letter-spacing:1px;margin-top:2px">Hue</div>
       </div>
-      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:6px 4px;text-align:center">
+      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:11px 4px;text-align:center">
         <input id="iv-s" type="text" inputmode="numeric" value="80" data-prop="s" style="width:100%;background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center">
         <div style="font-size:9px;color:#cfcfcf;text-transform:uppercase;letter-spacing:1px;margin-top:2px">Sat</div>
       </div>
-      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:6px 4px;text-align:center">
+      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:11px 4px;text-align:center">
         <input id="iv-l" type="text" inputmode="numeric" value="55" data-prop="l" style="width:100%;background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center">
         <div style="font-size:9px;color:#cfcfcf;text-transform:uppercase;letter-spacing:1px;margin-top:2px">Lum</div>
       </div>
     </div>
 
     <!-- RGB readout — editable -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex-shrink:0;margin-top:6px">
-      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:6px 4px;text-align:center">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;flex-shrink:0;margin-top:10px">
+      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:11px 4px;text-align:center">
         <input id="iv-r" type="text" inputmode="numeric" value="68" data-ch="r" style="width:100%;background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center">
         <div style="font-size:9px;color:#cfcfcf;text-transform:uppercase;letter-spacing:1px;margin-top:2px">R</div>
       </div>
-      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:6px 4px;text-align:center">
+      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:11px 4px;text-align:center">
         <input id="iv-g" type="text" inputmode="numeric" value="153" data-ch="g" style="width:100%;background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center">
         <div style="font-size:9px;color:#cfcfcf;text-transform:uppercase;letter-spacing:1px;margin-top:2px">G</div>
       </div>
-      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:6px 4px;text-align:center">
+      <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:11px 4px;text-align:center">
         <input id="iv-b" type="text" inputmode="numeric" value="255" data-ch="b" style="width:100%;background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center">
         <div style="font-size:9px;color:#cfcfcf;text-transform:uppercase;letter-spacing:1px;margin-top:2px">B</div>
       </div>
     </div>
 
     <!-- HEX row — editable, full width, same card style -->
-    <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:6px 12px;text-align:center;flex-shrink:0;margin-top:6px;display:flex;align-items:center;gap:8px;justify-content:center">
+    <div style="background:#111;border:1px solid #2a2a2e;border-radius:8px;padding:11px 12px;text-align:center;flex-shrink:0;margin-top:10px;display:flex;align-items:center;gap:8px;justify-content:center">
       <span style="font-size:14px;font-weight:700;color:#888;font-family:'Archivo Black',sans-serif">#</span>
-      <input id="hex-in" type="text" inputmode="text" maxlength="6" value="4499FF" spellcheck="false" style="background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center;letter-spacing:2px;text-transform:uppercase;width:110px">
+      <input id="hex-in" type="text" inputmode="text" maxlength="6" value="4499FF" spellcheck="false" oninput="applyHexValue(this.value)" onkeydown="if(event.key==='Enter'){if(!applyHexValue(this.value))restoreHexField();this.blur();}" onblur="if(!applyHexValue(this.value))restoreHexField()" onfocus="this.select()" style="background:transparent;border:none;outline:none;font-size:16px;font-weight:700;color:#f0f0f2;font-family:'Archivo Black',sans-serif;text-align:center;letter-spacing:2px;text-transform:uppercase;width:110px">
       <span style="font-size:9px;color:#cfcfcf;text-transform:uppercase;letter-spacing:1px">Hex</span>
     </div>
 
@@ -293,16 +310,16 @@ input.hex-in:focus{border-color:var(--or)}
   <div style="display:flex;gap:5px;flex-shrink:0" id="base-tags"></div>
 </div>
 
-<!-- PASO 2 -->
-<div class="step-card">
+<!-- PASO 2 — full width -->
+<div class="step-card paso-full">
   <div class="step-head"><span class="step-num">PASO 2</span>
     <div><div class="step-title">Define las zonas tonales</div><div class="step-sub">L bloqueada al rango de cada zona · Tono y Saturación libres</div></div>
   </div>
   <div class="zone-cols" id="zone-cols"></div>
 </div>
 
-<!-- PASO 3 — TONAL CHECK -->
-<div class="step-card">
+<!-- PASO 3 — full width -->
+<div class="step-card paso-full">
   <div class="step-head"><span class="step-num">PASO 3</span>
     <div><div class="step-title">Verifica el valor tonal</div><div class="step-sub">Los tres tonos deben estar bien separados en la escala de grises</div></div>
   </div>
@@ -313,7 +330,7 @@ input.hex-in:focus{border-color:var(--or)}
   </div>
 </div>
 
-<!-- PASO 4 — WARM / ACCENT -->
+<!-- PASO 4 — col 1 -->
 <div class="step-card">
   <div class="step-head"><span class="step-num">PASO 4</span>
     <div><div class="step-title" id="step4-title">Temperatura · Acento</div><div class="step-sub" id="step4-sub">Mismo valor tonal, temperatura desplazada y acento complementario.</div></div>
@@ -321,7 +338,7 @@ input.hex-in:focus{border-color:var(--or)}
   <div id="temp-grid"></div>
 </div>
 
-<!-- PALETA -->
+<!-- PALETA — col 2 -->
 <div class="step-card">
   <div class="step-head"><span class="step-num">PALETA</span>
     <div><div class="step-title">Tu paleta completa</div><div class="step-sub">Preview de ilustración · Exportar</div></div>
@@ -398,11 +415,12 @@ function gray(hex){const[r,g,b]=hex2rgb(hex);const v=Math.round(.299*r+.587*g+.1
 function cc(hex){return lum(hex)>.35?'#111':'#f0f0f2'}
 function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v))}
 
-/* ══ WHEEL ══ */
+/* ══ WHEEL (legacy — only wires up if the wheel canvas is in the DOM) ══ */
 const wc=document.getElementById('wheel');
-const ctx=wc.getContext('2d');
+const ctx=wc?wc.getContext('2d'):null;
 const W=224,CX=W/2,CY=W/2,RO=104,RI=37;
 function drawWheel(){
+  if(!ctx)return;
   ctx.clearRect(0,0,W,W);
   for(let a=0;a<360;a++){
     ctx.beginPath();ctx.moveTo(CX,CY);
@@ -420,15 +438,18 @@ function drawWheel(){
   });
 }
 function wheelHit(e){
+  if(!wc)return;
   const r=wc.getBoundingClientRect();
   const mx=(e.touches?e.touches[0].clientX:e.clientX)-r.left;
   const my=(e.touches?e.touches[0].clientY:e.clientY)-r.top;
   const dx=mx-CX,dy=my-CY,d=Math.sqrt(dx*dx+dy*dy);
   if(d>RI-8&&d<RO+8){H=(Math.atan2(dy,dx)*180/Math.PI+90+360)%360;syncAll()}
 }
-wc.addEventListener('click',wheelHit);
-wc.addEventListener('mousemove',e=>{if(e.buttons===1)wheelHit(e)});
-wc.addEventListener('touchmove',e=>{e.preventDefault();wheelHit(e)},{passive:false});
+if(wc){
+  wc.addEventListener('click',wheelHit);
+  wc.addEventListener('mousemove',e=>{if(e.buttons===1)wheelHit(e)});
+  wc.addEventListener('touchmove',e=>{e.preventDefault();wheelHit(e)},{passive:false});
+}
 
 /* ══ SEED ══ */
 function seedZones(){
@@ -975,13 +996,29 @@ function applyHexValue(str){
 }
 function applyHex(){applyHexValue(document.getElementById('hex-in').value);}
 
+/* restore field to current valid hex if user left it empty / invalid */
+function restoreHexField(){
+  var inp=document.getElementById('hex-in');
+  if(!inp)return;
+  inp.value=hsl2hex(H,S,L).replace('#','').toUpperCase();
+  inp.style.color='#f0f0f2';
+}
+
 (function(){
   var inp=document.getElementById('hex-in');
   if(!inp)return;
   inp.addEventListener('input',function(){applyHexValue(this.value);});
-  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){applyHexValue(this.value);this.blur();}});
-  inp.addEventListener('blur',function(){applyHexValue(this.value);});
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){if(!applyHexValue(this.value))restoreHexField();this.blur();}});
+  inp.addEventListener('blur',function(){if(!applyHexValue(this.value))restoreHexField();});
   inp.addEventListener('focus',function(){this.select();}); /* select-all on focus for easy overwrite */
+  /* accept pasted strings that include '#' prefix */
+  inp.addEventListener('paste',function(e){
+    e.preventDefault();
+    var text=(e.clipboardData||window.clipboardData).getData('text');
+    text=(text||'').replace(/^#/,'').slice(0,6);
+    this.value=text;
+    applyHexValue(this.value);
+  });
 })();
 
 document.getElementById('sl-h').addEventListener('input',function(){H=+this.value;syncAll()});
@@ -1193,59 +1230,48 @@ requestAnimationFrame(updateVslThumbs);
   }
   window.ipkSync=upd;
 
-  /* ─ canvas SV drag ─ */
-  if(cv){cv.addEventListener('mousedown',function(e){
-    dsl=true;e.preventDefault();
-    var r=cv.getBoundingClientRect();
-    xy2sl((e.clientX-r.left)/r.width*CW,(e.clientY-r.top)/r.height*CH);
-    syncAll();
-  });}
-  /* ─ vertical hue drag ─ */
-  if(hueEl){hueEl.addEventListener('mousedown',function(e){
-    dh=true;e.preventDefault();
-    var r=hueEl.getBoundingClientRect();
-    H=Math.max(0,Math.min(360,Math.round((1-(e.clientY-r.top)/r.height)*360)));
-    syncAll();
-  });}
-  /* ─ vertical sat drag ─ */
-  if(satEl){satEl.addEventListener('mousedown',function(e){
-    dsat=true;e.preventDefault();
-    var r=satEl.getBoundingClientRect();
-    S=Math.max(0,Math.min(100,Math.round((1-(e.clientY-r.top)/r.height)*100)));
-    syncAll();
-  });}
-  /* ─ vertical lum drag ─ */
-  if(lumEl){lumEl.addEventListener('mousedown',function(e){
-    dlum=true;e.preventDefault();
-    var r=lumEl.getBoundingClientRect();
-    L=Math.max(10,Math.min(85,Math.round(10+(1-(e.clientY-r.top)/r.height)*75)));
-    syncAll();
-  });}
+  /* ─ pointer helpers: extract clientX/Y from mouse or touch event ─ */
+  function pX(e){return e.touches?e.touches[0].clientX:e.clientX}
+  function pY(e){return e.touches?e.touches[0].clientY:e.clientY}
+  function handleSV(e){var r=cv.getBoundingClientRect();xy2sl((pX(e)-r.left)/r.width*CW,(pY(e)-r.top)/r.height*CH);syncAll();}
+  function handleH(e){var r=hueEl.getBoundingClientRect();H=Math.max(0,Math.min(360,Math.round((1-(pY(e)-r.top)/r.height)*360)));syncAll();}
+  function handleS(e){var r=satEl.getBoundingClientRect();S=Math.max(0,Math.min(100,Math.round((1-(pY(e)-r.top)/r.height)*100)));syncAll();}
+  function handleL(e){var r=lumEl.getBoundingClientRect();L=Math.max(10,Math.min(85,Math.round(10+(1-(pY(e)-r.top)/r.height)*75)));syncAll();}
 
-  /* ─ global mousemove: checks all 4 flags ─ */
-  document.addEventListener('mousemove',function(e){
-    if(dsl&&cv){
-      var r=cv.getBoundingClientRect();
-      xy2sl((e.clientX-r.left)/r.width*CW,(e.clientY-r.top)/r.height*CH);
-      syncAll();
-    }
-    if(dh&&hueEl){
-      var r=hueEl.getBoundingClientRect();
-      H=Math.max(0,Math.min(360,Math.round((1-(e.clientY-r.top)/r.height)*360)));
-      syncAll();
-    }
-    if(dsat&&satEl){
-      var r=satEl.getBoundingClientRect();
-      S=Math.max(0,Math.min(100,Math.round((1-(e.clientY-r.top)/r.height)*100)));
-      syncAll();
-    }
-    if(dlum&&lumEl){
-      var r=lumEl.getBoundingClientRect();
-      L=Math.max(10,Math.min(85,Math.round(10+(1-(e.clientY-r.top)/r.height)*75)));
-      syncAll();
-    }
-  });
-  document.addEventListener('mouseup',function(){dsl=false;dh=false;dsat=false;dlum=false;});
+  /* ─ canvas SV drag (mouse + touch) ─ */
+  if(cv){
+    cv.addEventListener('mousedown',function(e){dsl=true;e.preventDefault();handleSV(e);});
+    cv.addEventListener('touchstart',function(e){dsl=true;e.preventDefault();handleSV(e);},{passive:false});
+  }
+  /* ─ vertical hue drag ─ */
+  if(hueEl){
+    hueEl.addEventListener('mousedown',function(e){dh=true;e.preventDefault();handleH(e);});
+    hueEl.addEventListener('touchstart',function(e){dh=true;e.preventDefault();handleH(e);},{passive:false});
+  }
+  /* ─ vertical sat drag ─ */
+  if(satEl){
+    satEl.addEventListener('mousedown',function(e){dsat=true;e.preventDefault();handleS(e);});
+    satEl.addEventListener('touchstart',function(e){dsat=true;e.preventDefault();handleS(e);},{passive:false});
+  }
+  /* ─ vertical lum drag ─ */
+  if(lumEl){
+    lumEl.addEventListener('mousedown',function(e){dlum=true;e.preventDefault();handleL(e);});
+    lumEl.addEventListener('touchstart',function(e){dlum=true;e.preventDefault();handleL(e);},{passive:false});
+  }
+
+  /* ─ global move/end: checks all 4 flags, mouse + touch ─ */
+  function moveAll(e){
+    if(dsl&&cv){handleSV(e);if(e.touches)e.preventDefault();}
+    if(dh&&hueEl){handleH(e);if(e.touches)e.preventDefault();}
+    if(dsat&&satEl){handleS(e);if(e.touches)e.preventDefault();}
+    if(dlum&&lumEl){handleL(e);if(e.touches)e.preventDefault();}
+  }
+  function endAll(){dsl=false;dh=false;dsat=false;dlum=false;}
+  document.addEventListener('mousemove',moveAll);
+  document.addEventListener('touchmove',moveAll,{passive:false});
+  document.addEventListener('mouseup',endAll);
+  document.addEventListener('touchend',endAll);
+  document.addEventListener('touchcancel',endAll);
 
   /* ─ HSL inputs: type to set value ─ */
   ['h','s','l'].forEach(function(prop){
@@ -1341,13 +1367,22 @@ requestAnimationFrame(updateVslThumbs);
   function upd(){var hex=h2x(ph,ps,pl);var rgb=h2r(ph,ps,pl);if(sw)sw.style.background=hex;if(hi&&document.activeElement!==hi)hi.value=hex.toUpperCase();var m={h:Math.round(ph),s:Math.round(ps),l:Math.round(pl),r:rgb[0],g:rgb[1],b:rgb[2]};Object.keys(m).forEach(function(k){var e=document.getElementById('cv-'+k);if(e)e.textContent=m[k];});var p=sl2xy();if(slc){slc.style.left=p[0]+'px';slc.style.top=p[1]+'px';slc.style.background=hex;}if(ht&&hueEl){var hw=hueEl.getBoundingClientRect().width||228;ht.style.left=(ph/360*hw)+'px';ht.style.top='50%';}}
   function apply(){H=ph;S=ps;L=pl;if(window.syncAll)syncAll();}
 
-  if(cv){cv.addEventListener('mousedown',function(e){dsl=true;e.preventDefault();var r=cv.getBoundingClientRect();xy2sl(e.clientX-r.left,e.clientY-r.top);upd();apply();});}
-  if(hueEl){hueEl.addEventListener('mousedown',function(e){dh=true;e.preventDefault();var r=hueEl.getBoundingClientRect();ph=Math.round((e.clientX-r.left)/r.width*360);draw();upd();apply();});}
-  document.addEventListener('mousemove',function(e){if(dsl&&cv){var r=cv.getBoundingClientRect();xy2sl(e.clientX-r.left,e.clientY-r.top);upd();apply();}if(dh&&hueEl){var r=hueEl.getBoundingClientRect();ph=Math.max(0,Math.min(360,Math.round((e.clientX-r.left)/r.width*360)));draw();upd();apply();}});
-  document.addEventListener('mouseup',function(){dsl=false;dh=false;});
+  function pX(e){return e.touches?e.touches[0].clientX:e.clientX}
+  function pY(e){return e.touches?e.touches[0].clientY:e.clientY}
+  function startSV(e){dsl=true;e.preventDefault();var r=cv.getBoundingClientRect();xy2sl(pX(e)-r.left,pY(e)-r.top);upd();apply();}
+  function startH(e){dh=true;e.preventDefault();var r=hueEl.getBoundingClientRect();ph=Math.round((pX(e)-r.left)/r.width*360);draw();upd();apply();}
+  if(cv){cv.addEventListener('mousedown',startSV);cv.addEventListener('touchstart',startSV,{passive:false});}
+  if(hueEl){hueEl.addEventListener('mousedown',startH);hueEl.addEventListener('touchstart',startH,{passive:false});}
+  function moveCpk(e){if(dsl&&cv){var r=cv.getBoundingClientRect();xy2sl(pX(e)-r.left,pY(e)-r.top);upd();apply();if(e.touches)e.preventDefault();}if(dh&&hueEl){var r=hueEl.getBoundingClientRect();ph=Math.max(0,Math.min(360,Math.round((pX(e)-r.left)/r.width*360)));draw();upd();apply();if(e.touches)e.preventDefault();}}
+  function endCpk(){dsl=false;dh=false;}
+  document.addEventListener('mousemove',moveCpk);
+  document.addEventListener('touchmove',moveCpk,{passive:false});
+  document.addEventListener('mouseup',endCpk);
+  document.addEventListener('touchend',endCpk);
+  document.addEventListener('touchcancel',endCpk);
   if(hi){hi.addEventListener('input',function(){var v=this.value.startsWith('#')?this.value:'#'+this.value;if(/^#[0-9A-Fa-f]{6}$/.test(v)){var hsl=x2h(v);ph=hsl[0];ps=hsl[1];pl=hsl[2];draw();upd();apply();}});}
 
-  function open(anchor){ph=H;ps=S;pl=L;var r=anchor.getBoundingClientRect();var x=r.left,y=r.bottom+8;if(x+252>window.innerWidth-8)x=window.innerWidth-260;if(y+310>window.innerHeight-8)y=r.top-318;if(x<8)x=8;pk.style.left=x+'px';pk.style.top=y+'px';pk.classList.add('open');draw();upd();if(dismissFn)document.removeEventListener('mousedown',dismissFn);dismissFn=function(e){if(!pk.contains(e.target)&&e.target!==anchor){pk.classList.remove('open');document.removeEventListener('mousedown',dismissFn);dismissFn=null;}};setTimeout(function(){document.addEventListener('mousedown',dismissFn);},50);}
+  function open(anchor){ph=H;ps=S;pl=L;var r=anchor.getBoundingClientRect();var x=r.left,y=r.bottom+8;if(x+252>window.innerWidth-8)x=window.innerWidth-260;if(y+310>window.innerHeight-8)y=r.top-318;if(x<8)x=8;pk.style.left=x+'px';pk.style.top=y+'px';pk.classList.add('open');draw();upd();if(dismissFn){document.removeEventListener('mousedown',dismissFn);document.removeEventListener('touchstart',dismissFn);}dismissFn=function(e){if(!pk.contains(e.target)&&e.target!==anchor){pk.classList.remove('open');document.removeEventListener('mousedown',dismissFn);document.removeEventListener('touchstart',dismissFn);dismissFn=null;}};setTimeout(function(){document.addEventListener('mousedown',dismissFn);document.addEventListener('touchstart',dismissFn);},50);}
 
   window.openColorPicker=function(anchor){if(pk.classList.contains('open')){pk.classList.remove('open');if(dismissFn){document.removeEventListener('mousedown',dismissFn);dismissFn=null;}}else{open(typeof anchor==='string'?document.getElementById(anchor):anchor);}};
 
