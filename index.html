@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Valor Tonal</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Kumbh+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -227,15 +228,15 @@ input.hex-in:focus{border-color:var(--or)}
   <div id="mtb-zones">
     <div class="mtb-zone" data-k="shadow">
       <div class="mtb-zone-bars"><div class="mtb-zone-col"></div><div class="mtb-zone-mono"></div></div>
-      <div class="mtb-zone-name">Sombra</div>
+      <div class="mtb-zone-name" data-i18n="zone.shadow.name">Sombra</div>
     </div>
     <div class="mtb-zone" data-k="mid">
       <div class="mtb-zone-bars"><div class="mtb-zone-col"></div><div class="mtb-zone-mono"></div></div>
-      <div class="mtb-zone-name">Tono Medio</div>
+      <div class="mtb-zone-name" data-i18n="zone.mid.name">Tono Medio</div>
     </div>
     <div class="mtb-zone" data-k="light">
       <div class="mtb-zone-bars"><div class="mtb-zone-col"></div><div class="mtb-zone-mono"></div></div>
-      <div class="mtb-zone-name">Luz</div>
+      <div class="mtb-zone-name" data-i18n="zone.light.name">Luz</div>
     </div>
   </div>
   <div id="mtb-scale"></div>
@@ -246,8 +247,9 @@ input.hex-in:focus{border-color:var(--or)}
 <div class="left" style="gap:0;padding:20px 20px 16px;justify-content:flex-start">
 
   <!-- Logo -->
-  <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:20px">
+  <div style="display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:20px;position:relative">
     <div style="font-family:'Archivo Black',sans-serif;font-size:22px;letter-spacing:3px">VALOR TONAL</div>
+    <button id="lang-btn" onclick="toggleLang()" style="position:absolute;right:0;background:#1a1a1c;border:1px solid #2a2a2e;border-radius:8px;padding:5px 10px;color:#888;font-size:10px;font-weight:700;cursor:pointer;letter-spacing:1px;font-family:'Kumbh Sans',sans-serif;transition:all .15s" onmouseover="this.style.borderColor='#ff5500';this.style.color='#ff7733'" onmouseout="this.style.borderColor='#2a2a2e';this.style.color='#888'">EN</button>
   </div>
 
   <!-- COLOR SWATCH — big white capsule showing current color -->
@@ -338,17 +340,17 @@ input.hex-in:focus{border-color:var(--or)}
   <!-- Harmony + Saved below -->
   <div id="harmony-block" style="display:contents">
   <div style="height:1px;background:var(--b1);flex-shrink:0;margin-bottom:12px"></div>
-  <div class="lbl" style="flex-shrink:0;margin-bottom:8px">Armonía</div>
+  <div class="lbl" style="flex-shrink:0;margin-bottom:8px" data-i18n="lbl.harmony">Armonía</div>
   <div id="h-list" style="flex-shrink:0"></div>
   <!-- Harmony swatches — big copyable color chips for the active harmony -->
   <div id="h-swatches" style="display:flex;gap:6px;flex-shrink:0;margin-top:10px"></div>
   <div style="display:flex;gap:6px;flex-shrink:0;margin-top:8px">
-    <button onclick="copyHarmony()" style="flex:1;background:#1a1a1c;border:1px solid #2a2a2e;border-radius:8px;padding:9px;color:#cfcfcf;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;transition:all .15s" onmouseover="this.style.borderColor='#ff5500';this.style.color='#ff7733'" onmouseout="this.style.borderColor='#2a2a2e';this.style.color='#cfcfcf'">Copiar HEX</button>
-    <button onclick="copyHarmonySVG()" style="flex:1;background:#1a1a1c;border:1px solid #2a2a2e;border-radius:8px;padding:9px;color:#cfcfcf;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;transition:all .15s" onmouseover="this.style.borderColor='#3dffd4';this.style.color='#3dffd4'" onmouseout="this.style.borderColor='#2a2a2e';this.style.color='#cfcfcf'">Copiar SVG</button>
+    <button onclick="copyHarmony()" data-i18n="lbl.copyHex" style="flex:1;background:#1a1a1c;border:1px solid #2a2a2e;border-radius:8px;padding:9px;color:#cfcfcf;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;transition:all .15s" onmouseover="this.style.borderColor='#ff5500';this.style.color='#ff7733'" onmouseout="this.style.borderColor='#2a2a2e';this.style.color='#cfcfcf'">Copiar HEX</button>
+    <button onclick="copyHarmonySVG()" data-i18n="lbl.copySvgHarmony" style="flex:1;background:#1a1a1c;border:1px solid #2a2a2e;border-radius:8px;padding:9px;color:#cfcfcf;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;transition:all .15s" onmouseover="this.style.borderColor='#3dffd4';this.style.color='#3dffd4'" onmouseout="this.style.borderColor='#2a2a2e';this.style.color='#cfcfcf'">Copiar SVG</button>
   </div>
   <div style="height:1px;background:var(--b1);flex-shrink:0;margin:12px 0 8px"></div>
-  <div class="lbl" style="flex-shrink:0;margin-bottom:6px">Guardadas</div>
-  <div id="saved-wrap" style="overflow-y:auto;flex:0 1 auto"><div style="font-size:10px;color:var(--dim)">Sin paletas guardadas</div></div>
+  <div class="lbl" style="flex-shrink:0;margin-bottom:6px" data-i18n="lbl.saved">Guardadas</div>
+  <div id="saved-wrap" style="overflow-y:auto;flex:0 1 auto"><div style="font-size:10px;color:var(--dim)" data-i18n="lbl.noSaved" id="no-saved-msg">Sin paletas guardadas</div></div>
   </div>
 </div>
 
@@ -367,27 +369,27 @@ input.hex-in:focus{border-color:var(--or)}
 
 <!-- PASO 2 — full width -->
 <div class="step-card paso-full">
-  <div class="step-head"><span class="step-num">PASO 2</span>
-    <div><div class="step-title">Define las zonas tonales</div><div class="step-sub">L bloqueada al rango de cada zona · Tono y Saturación libres</div></div>
+  <div class="step-head"><span class="step-num" data-i18n="step2">PASO 2</span>
+    <div><div class="step-title" data-i18n="step2.title">Define las zonas tonales</div><div class="step-sub" data-i18n="step2.sub">L bloqueada al rango de cada zona · Tono y Saturación libres</div></div>
   </div>
   <div class="zone-cols" id="zone-cols"></div>
 </div>
 
 <!-- PASO 3 — full width -->
 <div class="step-card paso-full">
-  <div class="step-head"><span class="step-num">PASO 3</span>
-    <div><div class="step-title">Verifica el valor tonal</div><div class="step-sub">Los tres tonos deben estar bien separados en la escala de grises</div></div>
+  <div class="step-head"><span class="step-num" data-i18n="step3">PASO 3</span>
+    <div><div class="step-title" data-i18n="step3.title">Verifica el valor tonal</div><div class="step-sub" data-i18n="step3.sub">Los tres tonos deben estar bien separados en la escala de grises</div></div>
   </div>
   <div id="tonal-check"></div>
   <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
-    <button class="btn-ghost" onclick="savePalette()">Guardar paleta</button>
-    <button class="btn-act" onclick="copySVG()">Copiar como SVG</button>
+    <button class="btn-ghost" onclick="savePalette()" data-i18n="lbl.savePalette">Guardar paleta</button>
+    <button class="btn-act" onclick="copySVG()" data-i18n="lbl.copyAsSvg">Copiar como SVG</button>
   </div>
 </div>
 
 <!-- PASO 4 — col 1 -->
 <div class="step-card">
-  <div class="step-head"><span class="step-num">PASO 4</span>
+  <div class="step-head"><span class="step-num" data-i18n="step4">PASO 4</span>
     <div><div class="step-title" id="step4-title">Temperatura · Acento</div><div class="step-sub" id="step4-sub">Mismo valor tonal, temperatura desplazada y acento complementario.</div></div>
   </div>
   <div id="temp-grid"></div>
@@ -395,22 +397,22 @@ input.hex-in:focus{border-color:var(--or)}
 
 <!-- PALETA — col 2 -->
 <div class="step-card">
-  <div class="step-head"><span class="step-num">PALETA</span>
-    <div><div class="step-title">Tu paleta completa</div><div class="step-sub">Preview de ilustración · Exportar</div></div>
+  <div class="step-head"><span class="step-num" data-i18n="palette">PALETA</span>
+    <div><div class="step-title" data-i18n="palette.title">Tu paleta completa</div><div class="step-sub" data-i18n="palette.sub">Preview de ilustración · Exportar</div></div>
   </div>
   <div id="pal-wrap"></div>
   <div style="margin-top:12px">
-    <div class="lbl" style="margin-bottom:6px">Preview</div>
+    <div class="lbl" style="margin-bottom:6px" data-i18n="lbl.preview">Preview</div>
     <div class="prev-scene" id="prev-scene"></div>
   </div>
   <div style="margin-top:14px">
-    <div class="lbl" style="margin-bottom:8px">Exportar</div>
+    <div class="lbl" style="margin-bottom:8px" data-i18n="lbl.export">Exportar</div>
     <div class="exp-row">
       <button class="exp-btn" onclick="exportCSS()">CSS Variables</button>
       <button class="exp-btn" onclick="exportHex()">HEX List</button>
       <button class="exp-btn" onclick="exportASE()">ASE · Adobe</button>
       <button class="exp-btn" onclick="exportJSON()">JSON Tokens</button>
-      <button class="exp-btn" onclick="copySVG()">Copiar SVG</button>
+      <button class="exp-btn" onclick="copySVG()" data-i18n="lbl.copySvg">Copiar SVG</button>
     </div>
   </div>
 </div>
@@ -424,6 +426,107 @@ input.hex-in:focus{border-color:var(--or)}
 /* ══ STATE ══ */
 let H=210,S=80,L=55,harmonyMode='split';
 let savedPalettes=[];
+
+/* ══ i18n ══ */
+let currentLang='es';
+const I18N={
+  'zone.shadow.name':{es:'Sombra',en:'Shadow'},
+  'zone.shadow.sub':{es:'Tinta · sombra · volumen bajo',en:'Tint · shadow · low volume'},
+  'zone.mid.name':{es:'Tono Medio',en:'Midtone'},
+  'zone.mid.sub':{es:'Color base · piel · relleno',en:'Base color · skin · fill'},
+  'zone.light.name':{es:'Luz',en:'Light'},
+  'zone.light.sub':{es:'Luces · highlight · planos altos',en:'Lights · highlight · high planes'},
+  'harm.split':{es:'Split-Comp',en:'Split-Comp'},
+  'harm.complementary':{es:'Complementario',en:'Complementary'},
+  'harm.triadic':{es:'Triádica',en:'Triadic'},
+  'harm.analogous':{es:'Análoga',en:'Analogous'},
+  'harm.mono':{es:'Monocromática',en:'Monochromatic'},
+  'lbl.harmony':{es:'Armonía',en:'Harmony'},
+  'lbl.saved':{es:'Guardadas',en:'Saved'},
+  'lbl.noSaved':{es:'Sin paletas guardadas',en:'No saved palettes'},
+  'lbl.copyHex':{es:'Copiar HEX',en:'Copy HEX'},
+  'lbl.copySvg':{es:'Copiar SVG',en:'Copy SVG'},
+  'lbl.copySvgHarmony':{es:'Copiar SVG',en:'Copy SVG'},
+  'lbl.copyAsSvg':{es:'Copiar como SVG',en:'Copy as SVG'},
+  'lbl.savePalette':{es:'Guardar paleta',en:'Save palette'},
+  'lbl.preview':{es:'Preview',en:'Preview'},
+  'lbl.export':{es:'Exportar',en:'Export'},
+  'step2':{es:'PASO 2',en:'STEP 2'},
+  'step2.title':{es:'Define las zonas tonales',en:'Define tonal zones'},
+  'step2.sub':{es:'L bloqueada al rango de cada zona · Tono y Saturación libres',en:'L locked to each zone range · Hue & Saturation free'},
+  'step3':{es:'PASO 3',en:'STEP 3'},
+  'step3.title':{es:'Verifica el valor tonal',en:'Verify tonal value'},
+  'step3.sub':{es:'Los tres tonos deben estar bien separados en la escala de grises',en:'The three tones must be well separated in grayscale'},
+  'step4':{es:'PASO 4',en:'STEP 4'},
+  'palette':{es:'PALETA',en:'PALETTE'},
+  'palette.title':{es:'Tu paleta completa',en:'Your complete palette'},
+  'palette.sub':{es:'Preview de ilustración · Exportar',en:'Illustration preview · Export'},
+  'tc.black':{es:'negro',en:'black'},
+  'tc.white':{es:'blanco',en:'white'},
+  'tc.scale':{es:'escala de luminancia perceptual',en:'perceptual luminance scale'},
+  'tc.correct':{es:'Correcto',en:'Correct'},
+  'tc.review':{es:'Revisar',en:'Review'},
+  'tc.zone':{es:'zona',en:'zone'},
+  'tc.shadowToMid':{es:'Sombra → Tono Medio',en:'Shadow → Midtone'},
+  'tc.midToLight':{es:'Tono Medio → Luz',en:'Midtone → Light'},
+  'tc.goodContrast':{es:'✓ buen contraste',en:'✓ good contrast'},
+  'tc.min15':{es:'⚠ mínimo 15%',en:'⚠ minimum 15%'},
+  'temp.hue':{es:'Tono',en:'Hue'},
+  'temp.sat':{es:'Saturación',en:'Saturation'},
+  'temp.lum':{es:'Luminosidad',en:'Lightness'},
+  'temp.accent':{es:'Acento',en:'Accent'},
+  'temp.complementary':{es:'complementario',en:'complementary'},
+  'temp.warm':{es:'Cálido',en:'Warm'},
+  'temp.cool':{es:'Frío',en:'Cool'},
+  'temp.neutral':{es:'Neutro',en:'Neutral'},
+  'temp.clickCopy':{es:'Click en swatch → copia HEX',en:'Click swatch → copy HEX'},
+  'temp.correctValue':{es:'valor tonal correcto',en:'correct tonal value'},
+  'temp.outOfRange':{es:'fuera de rango',en:'out of range'},
+  'prev.shadow':{es:'Sombra',en:'Shadow'},
+  'prev.illustration':{es:'Ilustración',en:'Illustration'},
+  'prev.midLocal':{es:'tono medio · color local',en:'midtone · local color'},
+  'prev.light':{es:'Luz',en:'Light'},
+  'zone.hue':{es:'Tono',en:'Hue'},
+  'zone.sat':{es:'Saturación',en:'Saturation'},
+  'zone.lum':{es:'Luminosidad',en:'Lightness'},
+  'zone.reset':{es:'↺ Resetear',en:'↺ Reset'},
+  'zone.range':{es:'rango',en:'range'},
+  'zone.resetTo':{es:'Resetear al color base',en:'Reset to base color'},
+  'toast.paletteSaved':{es:'Paleta guardada',en:'Palette saved'},
+  'toast.loaded':{es:'Cargada',en:'Loaded'},
+  'toast.hexCopied':{es:'HEX copiados',en:'HEX copied'},
+  'toast.cssCopied':{es:'CSS copiado',en:'CSS copied'},
+  'toast.jsonCopied':{es:'JSON copiado',en:'JSON copied'},
+  'toast.aseDownloaded':{es:'ASE descargado',en:'ASE downloaded'},
+  'toast.svgCopied':{es:'SVG copiado — pega en Illustrator / Figma',en:'SVG copied — paste in Illustrator / Figma'},
+  'toast.copied':{es:'Copiado',en:'Copied'},
+  'toast.copyFail':{es:'No se pudo copiar',en:'Could not copy'},
+  'toast.harmonyCopied':{es:'Armonía copiada',en:'Harmony copied'},
+  'toast.reset':{es:'reseteada',en:'reset'},
+  'tag.warm':{es:'Cálido',en:'Warm'},
+  'tag.cool':{es:'Frío',en:'Cool'},
+  'tag.neutral':{es:'Neutro',en:'Neutral'},
+  'palette.name':{es:'Paleta',en:'Palette'},
+};
+const HUE_NAMES_I18N={
+  es:['Rojo','Rojo-Naranja','Naranja','Amarillo-Naranja','Amarillo','Amarillo-Verde','Verde Lima','Verde','Verde-Azul','Cian-Verde','Cian','Cian-Azul','Azul Cielo','Azul','Azul Índigo','Índigo','Violeta','Violeta-Rosa','Rosa','Rosa-Rojo'],
+  en:['Red','Red-Orange','Orange','Yellow-Orange','Yellow','Yellow-Green','Lime Green','Green','Green-Blue','Cyan-Green','Cyan','Cyan-Blue','Sky Blue','Blue','Blue Indigo','Indigo','Violet','Violet-Pink','Pink','Pink-Red']
+};
+function t(k){const e=I18N[k];return e?(e[currentLang]||e.es):k;}
+function hueNames(){return HUE_NAMES_I18N[currentLang]||HUE_NAMES_I18N.es;}
+function zn(zd){return t('zone.'+zd.key+'.name');}
+function zs(zd){return t('zone.'+zd.key+'.sub');}
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(function(el){el.textContent=t(el.dataset.i18n);});
+  var btn=document.getElementById('lang-btn');
+  if(btn)btn.textContent=currentLang==='es'?'EN':'ES';
+  document.documentElement.lang=currentLang;
+}
+function toggleLang(){
+  currentLang=currentLang==='es'?'en':'es';
+  applyLang();
+  syncAll();
+}
 
 const ZONE_DEFS=[
   {key:'shadow',name:'Sombra',    sub:'Tinta · sombra · volumen bajo',   lTarget:20,lMin:8, lMax:35},
@@ -445,7 +548,7 @@ const HARMONIES={
   analogous:{name:'Análoga',offsets:[-30,30]},
   mono:{name:'Monocromática',offsets:[]},
 };
-const HUE_NAMES=['Rojo','Rojo-Naranja','Naranja','Amarillo-Naranja','Amarillo','Amarillo-Verde','Verde Lima','Verde','Verde-Azul','Cian-Verde','Cian','Cian-Azul','Azul Cielo','Azul','Azul Índigo','Índigo','Violeta','Violeta-Rosa','Rosa','Rosa-Rojo'];
+const HUE_NAMES=HUE_NAMES_I18N.es;
 
 /* ══ COLOR MATH ══ */
 function hsl2hex(h,s,l){
@@ -544,7 +647,7 @@ function syncAll(){
   const bhx=document.getElementById('base-hex');if(bhx)bhx.textContent=hex.toUpperCase();
   const bhs=document.getElementById('base-hsl');if(bhs)bhs.textContent=`HSL ${Math.round(H)}° ${Math.round(S)}% ${Math.round(L)}%`;
   const btg=document.getElementById('base-tags');
-  if(btg){const isW=H<50||H>330,isC=H>160&&H<270;btg.innerHTML=`<span style="font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid ${isW?'#ff5500':isC?'#3dffd4':'#444'};color:${isW?'#ff7733':isC?'#3dffd4':'#888'};background:${isW?'#1a0800':isC?'#001a13':'transparent'}">${isW?'Cálido':isC?'Frío':'Neutro'}</span>`;}
+  if(btg){const isW=H<50||H>330,isC=H>160&&H<270;btg.innerHTML=`<span style="font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid ${isW?'#ff5500':isC?'#3dffd4':'#444'};color:${isW?'#ff7733':isC?'#3dffd4':'#888'};background:${isW?'#1a0800':isC?'#001a13':'transparent'}">${isW?t('tag.warm'):isC?t('tag.cool'):t('tag.neutral')}</span>`;}
   renderHarmony();
   /* siempre resetear zonas y temperaturas desde el color base */
   ZONE_DEFS.forEach(zd=>{ev[zd.key]={h:H,s:S,l:zd.lTarget}});
@@ -566,7 +669,7 @@ function renderHarmony(){
     const dots=[0,...val.offsets].map(off=>`<div class="h-dot" style="background:${hsl2hex((H+off+360)%360,S,L)}"></div>`).join('');
     const row=document.createElement('div');
     row.className='h-row'+(harmonyMode===key?' act':'');
-    row.innerHTML=`<div style="display:flex;gap:3px">${dots}</div><div class="h-name">${val.name}</div>`;
+    row.innerHTML=`<div style="display:flex;gap:3px">${dots}</div><div class="h-name">${t('harm.'+key)}</div>`;
     row.onclick=()=>{harmonyMode=key;syncAll()};
     cont.appendChild(row);
   });
@@ -583,11 +686,11 @@ function renderHarmony(){
   }
 }
 function copyOne(hex){
-  navigator.clipboard.writeText(hex.toUpperCase()).then(function(){toast('Copiado '+hex.toUpperCase())}).catch(function(){toast('No se pudo copiar')});
+  navigator.clipboard.writeText(hex.toUpperCase()).then(function(){toast(t('toast.copied')+' '+hex.toUpperCase())}).catch(function(){toast(t('toast.copyFail'))});
 }
 function copyHarmony(){
   const txt=harmonyHexes().map(h=>h.toUpperCase()).join('\n');
-  navigator.clipboard.writeText(txt).then(function(){toast('Armonía copiada ('+harmonyHexes().length+' colores)')}).catch(function(){toast('No se pudo copiar')});
+  navigator.clipboard.writeText(txt).then(function(){toast(t('toast.harmonyCopied')+' ('+harmonyHexes().length+')')}).catch(function(){toast(t('toast.copyFail'))});
 }
 function copyHarmonySVG(){
   const hexes=harmonyHexes();
@@ -598,7 +701,7 @@ function copyHarmonySVG(){
   const totalH=pad*2+sz+16+22; // swatch + hex label + top header room
   let svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${totalW}" height="${totalH}">`;
   svg+=`<rect width="${totalW}" height="${totalH}" fill="#0c0c0e" rx="20"/>`;
-  svg+=`<text x="${pad}" y="${pad+11}" font-family="monospace" font-size="10" fill="#ffffff" font-weight="bold">${HARMONIES[harmonyMode].name}</text>`;
+  svg+=`<text x="${pad}" y="${pad+11}" font-family="monospace" font-size="10" fill="#ffffff" font-weight="bold">${t('harm.'+harmonyMode)}</text>`;
   hexes.forEach((hex,i)=>{
     const x=pad+i*(sz+gap);
     const y=pad+18;
@@ -606,7 +709,7 @@ function copyHarmonySVG(){
     svg+=`<text x="${x+sz/2}" y="${y+sz+16}" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" font-weight="bold">${hex.toUpperCase()}</text>`;
   });
   svg+=`</svg>`;
-  navigator.clipboard.writeText(svg).then(()=>toast('SVG copiado — pega en Illustrator / Figma')).catch(()=>toast('No se pudo copiar'));
+  navigator.clipboard.writeText(svg).then(()=>toast(t('toast.svgCopied'))).catch(()=>toast(t('toast.copyFail')));
 }
 
 /* ══ ZONES ══ */
@@ -623,8 +726,8 @@ function renderZones(){
     col.innerHTML=`
       <div class="zone-header" id="zh-${zd.key}" style="background:${hex};transition:background .15s">
         <div style="padding:14px 14px 12px">
-          <div class="zone-name" style="color:${cc(hex)}">${zd.name}</div>
-          <div class="zone-role" style="color:${cc(hex)};opacity:.6">${zd.sub}</div>
+          <div class="zone-name" style="color:${cc(hex)}">${zn(zd)}</div>
+          <div class="zone-role" style="color:${cc(hex)};opacity:.6">${zs(zd)}</div>
         </div>
       </div>
       <div class="zone-body">
@@ -645,7 +748,7 @@ function renderZones(){
         <!-- H -->
         <div>
           <div style="display:flex;justify-content:space-between;margin-bottom:3px">
-            <span style="font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px">Tono</span>
+            <span style="font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px">${t('zone.hue')}</span>
             <span id="evh-${zd.key}" style="font-family:'Kumbh Sans',sans-serif;font-weight:600;font-size:11px;color:var(--text)">${z.h}°</span>
           </div>
           <input type="range" min="0" max="360" value="${z.h}" style="width:100%;background:linear-gradient(to right,#f00,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,#f00)" oninput="liveEdit('${zd.key}','h',+this.value)">
@@ -653,7 +756,7 @@ function renderZones(){
         <!-- S -->
         <div>
           <div style="display:flex;justify-content:space-between;margin-bottom:3px">
-            <span style="font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px">Saturación</span>
+            <span style="font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px">${t('zone.sat')}</span>
             <span id="evs-${zd.key}" style="font-family:'Kumbh Sans',sans-serif;font-weight:600;font-size:11px;color:var(--text)">${z.s}%</span>
           </div>
           <input type="range" min="0" max="100" value="${z.s}" id="esl-s-${zd.key}" style="width:100%;background:linear-gradient(to right,hsl(${z.h},0%,${z.l}%),hsl(${z.h},100%,${z.l}%))" oninput="liveEdit('${zd.key}','s',+this.value)">
@@ -661,20 +764,20 @@ function renderZones(){
         <!-- L locked -->
         <div>
           <div style="display:flex;justify-content:space-between;margin-bottom:3px">
-            <span style="font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px">Luminosidad</span>
+            <span style="font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px">${t('zone.lum')}</span>
             <span id="evl-${zd.key}" style="font-family:'Kumbh Sans',sans-serif;font-weight:600;font-size:11px;color:var(--text)">${z.l}%</span>
           </div>
           <input type="range" min="${zd.lMin}" max="${zd.lMax}" value="${z.l}" id="esl-l-${zd.key}" style="width:100%;background:linear-gradient(to right,hsl(${z.h},${z.s}%,${zd.lMin}%),hsl(${z.h},${z.s}%,${zd.lMax}%))" oninput="liveEdit('${zd.key}','l',+this.value)">
           <div style="display:flex;justify-content:space-between;margin-top:2px">
             <span style="font-size:8px;color:#2e2e36">${zd.lMin}%</span>
-            <span style="font-size:8px;color:#2e2e36">rango ${zd.name.toLowerCase()}</span>
+            <span style="font-size:8px;color:#2e2e36">${t('zone.range')} ${zn(zd).toLowerCase()}</span>
             <span style="font-size:8px;color:#2e2e36">${zd.lMax}%</span>
           </div>
         </div>
       </div>
-      <button class="zone-gen" onclick="resetZone('${zd.key}')" title="Resetear al color base">
+      <button class="zone-gen" onclick="resetZone('${zd.key}')" title="${t('zone.resetTo')}">
         <div class="gd" style="background:${hsl2hex(H,S,zd.lTarget)}"></div>
-        ↺ Resetear
+        ${t('zone.reset')}
       </button>`;
     cont.appendChild(col);
   });
@@ -721,7 +824,7 @@ function resetZone(zKey){
   const zd=ZONE_DEFS.find(z=>z.key===zKey);
   ev[zKey]={h:H,s:S,l:zd.lTarget};
   renderZones();renderTonalCheck();renderTempGrid();renderPalette();renderMobileTonalBar();
-  toast(zd.name+' reseteada');
+  toast(zn(zd)+' '+t('toast.reset'));
 }
 
 /* ══ TONAL CHECK (Paso 3) ══ */
@@ -755,7 +858,7 @@ function renderTonalCheck(){
 
   const reps=ZONE_DEFS.map(zd=>{
     const z=ev[zd.key];
-    return{hex:hsl2hex(z.h,z.s,z.l),l:z.l,name:zd.name,lMin:zd.lMin,lMax:zd.lMax};
+    return{hex:hsl2hex(z.h,z.s,z.l),l:z.l,name:zn(zd),lMin:zd.lMin,lMax:zd.lMax};
   });
   const lvals=reps.map(r=>lumPct(r.hex));
   const[ls,lm,ll]=lvals;
@@ -767,9 +870,9 @@ function renderTonalCheck(){
   const ruler=`
     <div style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-        <span style="font-size:9px;color:#333">0 · negro</span>
-        <span style="font-size:9px;color:#555">escala de luminancia perceptual</span>
-        <span style="font-size:9px;color:#ccc">100 · blanco</span>
+        <span style="font-size:9px;color:#333">0 · ${t('tc.black')}</span>
+        <span style="font-size:9px;color:#555">${t('tc.scale')}</span>
+        <span style="font-size:9px;color:#ccc">100 · ${t('tc.white')}</span>
       </div>
       <div style="position:relative;height:12px;border-radius:6px;background:linear-gradient(to right,#000,#fff)">
         ${reps.map((r,i)=>`
@@ -798,13 +901,13 @@ function renderTonalCheck(){
         <div class="tone-info">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
             <div style="width:8px;height:8px;border-radius:50%;background:${oc}"></div>
-            <span style="font-size:10px;color:${oc}">${ok?'Correcto':'Revisar'}</span>
+            <span style="font-size:10px;color:${oc}">${ok?t('tc.correct'):t('tc.review')}</span>
           </div>
           <div class="tone-lum" style="color:${ok?'var(--text)':'#ff9944'}">${lv}%</div>
           <div class="tone-bar-bg">
             <div class="tone-bar-fill" style="width:${lv}%;background:${oc}"></div>
           </div>
-          <div style="font-size:9px;color:#555">${r.name} · zona ${r.lMin}–${r.lMax}%</div>
+          <div style="font-size:9px;color:#555">${r.name} · ${t('tc.zone')} ${r.lMin}–${r.lMax}%</div>
         </div>
       </div>`;
     }).join('')}
@@ -813,17 +916,17 @@ function renderTonalCheck(){
   /* gap indicators */
   const gaps=`<div class="gap-row">
     <div class="gap-card" style="border-color:${smOk?'#143a2a':'#3a2010'};background:${smOk?'#0a221a':'#1f1008'}">
-      <div style="font-size:9px;color:#555;margin-bottom:3px">Sombra → Tono Medio</div>
+      <div style="font-size:9px;color:#555;margin-bottom:3px">${t('tc.shadowToMid')}</div>
       <div style="display:flex;align-items:baseline;gap:8px">
         <span style="font-family:'Archivo Black',sans-serif;font-size:22px;color:${smOk?'var(--te)':'#ff9944'}">${dSM>0?'+':''}${dSM}%</span>
-        <span style="font-size:10px;color:${smOk?'var(--te)':'#ff9944'}">${smOk?'✓ buen contraste':'⚠ mínimo 15%'}</span>
+        <span style="font-size:10px;color:${smOk?'var(--te)':'#ff9944'}">${smOk?t('tc.goodContrast'):t('tc.min15')}</span>
       </div>
     </div>
     <div class="gap-card" style="border-color:${mlOk?'#143a2a':'#3a2010'};background:${mlOk?'#0a221a':'#1f1008'}">
-      <div style="font-size:9px;color:#555;margin-bottom:3px">Tono Medio → Luz</div>
+      <div style="font-size:9px;color:#555;margin-bottom:3px">${t('tc.midToLight')}</div>
       <div style="display:flex;align-items:baseline;gap:8px">
         <span style="font-family:'Archivo Black',sans-serif;font-size:22px;color:${mlOk?'var(--te)':'#ff9944'}">${dML>0?'+':''}${dML}%</span>
-        <span style="font-size:10px;color:${mlOk?'var(--te)':'#ff9944'}">${mlOk?'✓ buen contraste':'⚠ mínimo 15%'}</span>
+        <span style="font-size:10px;color:${mlOk?'var(--te)':'#ff9944'}">${mlOk?t('tc.goodContrast'):t('tc.min15')}</span>
       </div>
     </div>
   </div>`;
@@ -838,10 +941,10 @@ function renderTonalCheck(){
 function tempClass(hue){
   /* classify a hue into temperature + color name, dynamically */
   hue=((hue%360)+360)%360;
-  var name=HUE_NAMES[Math.round(hue/18)%20]||'';
+  var name=hueNames()[Math.round(hue/18)%20]||'';
   var isWarm=(hue<60||hue>=330);       /* rojos, naranjas, amarillos */
   var isCool=(hue>=160&&hue<280);      /* cianes, azules, índigos */
-  var temp=isWarm?'Cálido':isCool?'Frío':'Neutro';
+  var temp=isWarm?t('temp.warm'):isCool?t('temp.cool'):t('temp.neutral');
   return {temp:temp, name:name, label:temp, desc:temp+' · '+name.toLowerCase()};
 }
 function renderTempGrid(){
@@ -851,7 +954,7 @@ function renderTempGrid(){
   const wc=tempClass(tH.warm), ac=tempClass(tH.accent);
   const temps=[
     {key:'warm',  label:wc.label, desc:wc.desc},
-    {key:'accent',label:'Acento', desc:ac.temp+' · complementario'},
+    {key:'accent',label:t('temp.accent'), desc:ac.temp+' · '+t('temp.complementary')},
   ];
 
   // header
@@ -865,7 +968,7 @@ function renderTempGrid(){
 
   // hue sliders — one per temperature
   html+=`<div style="display:grid;grid-template-columns:72px 1fr 1fr;gap:6px;padding:0 4px;margin-bottom:12px;align-items:center">
-    <div style="text-align:right;padding-right:8px;font-size:9px;color:#444;text-transform:uppercase;letter-spacing:1px">Tono</div>
+    <div style="text-align:right;padding-right:8px;font-size:9px;color:#444;text-transform:uppercase;letter-spacing:1px">${t('temp.hue')}</div>
     ${temps.map(t=>`<div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
         <div style="width:12px;height:12px;border-radius:3px;background:hsl(${tH[t.key]},70%,55%)" id="tc-dot-${t.key}"></div>
@@ -884,7 +987,7 @@ function renderTempGrid(){
     const ok=lv>=zd.lMin&&lv<=zd.lMax;
     return`<div style="display:grid;grid-template-columns:72px 1fr 1fr;gap:6px;padding:0 4px;margin-bottom:6px;align-items:center">
       <div style="text-align:right;padding-right:8px">
-        <div style="font-family:'Kumbh Sans',sans-serif;font-weight:600;font-size:12px;color:var(--text)">${zd.name}</div>
+        <div style="font-family:'Kumbh Sans',sans-serif;font-weight:600;font-size:12px;color:var(--text)">${zn(zd)}</div>
         <div style="display:flex;align-items:center;gap:4px;justify-content:flex-end;margin-top:2px">
           <div style="width:6px;height:6px;border-radius:50%;background:${ok?'var(--te)':'#ff9944'}" id="tg-dot-${zd.key}"></div>
           <span style="font-size:9px;color:${ok?'#3dffd4':'#ff9944'}" id="tg-lv-${zd.key}">${lv}%</span>
@@ -895,7 +998,7 @@ function renderTempGrid(){
         const tlv=lumPct(hex);
         const tok=tlv>=zd.lMin&&tlv<=zd.lMax;
         return`<div id="tgsw-${t.key}-${zd.key}" style="border-radius:6px;overflow:hidden;height:52px;display:flex;cursor:pointer;border:1px solid ${tok?'rgba(255,255,255,.06)':'#3a2010'};transition:transform .1s"
-          onclick="copyHex('${hex}')" title="${hex} · Lum ${tlv}% · click para copiar"
+          onclick="copyHex('${hex}')" title="${hex} · Lum ${tlv}%"
           onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
           <div id="tgsw-color-${t.key}-${zd.key}" style="flex:3;background:${hex}"></div>
           <div id="tgsw-gray-${t.key}-${zd.key}" style="flex:1;background:${gray(hex)};border-left:2px solid #0c0c0e"></div>
@@ -905,10 +1008,10 @@ function renderTempGrid(){
   }).join('');
 
   html+=`<div style="display:flex;align-items:center;gap:10px;margin-top:10px;padding:0 4px">
-    <span style="font-size:9px;color:#333">Click en swatch → copia HEX</span>
+    <span style="font-size:9px;color:#333">${t('temp.clickCopy')}</span>
     <span style="font-size:9px;color:#333">·</span>
-    <div style="display:flex;align-items:center;gap:4px"><div style="width:6px;height:6px;border-radius:50%;background:var(--te)"></div><span style="font-size:9px;color:#3dffd4">valor tonal correcto</span></div>
-    <div style="display:flex;align-items:center;gap:4px"><div style="width:6px;height:6px;border-radius:50%;background:#ff9944"></div><span style="font-size:9px;color:#ff9944">fuera de rango</span></div>
+    <div style="display:flex;align-items:center;gap:4px"><div style="width:6px;height:6px;border-radius:50%;background:var(--te)"></div><span style="font-size:9px;color:#3dffd4">${t('temp.correctValue')}</span></div>
+    <div style="display:flex;align-items:center;gap:4px"><div style="width:6px;height:6px;border-radius:50%;background:#ff9944"></div><span style="font-size:9px;color:#ff9944">${t('temp.outOfRange')}</span></div>
   </div>`;
 
   cont.innerHTML=html;
@@ -934,7 +1037,7 @@ function patchTempCol(tKey){
     const sw=document.getElementById(`tgsw-${tKey}-${zd.key}`);
     const swc=document.getElementById(`tgsw-color-${tKey}-${zd.key}`);
     const swg=document.getElementById(`tgsw-gray-${tKey}-${zd.key}`);
-    if(sw){sw.style.borderColor=tok?'rgba(255,255,255,.06)':'#3a2010';sw.setAttribute('onclick',`copyHex('${hex}')`);sw.setAttribute('title',`${hex} · Lum ${tlv}% · click para copiar`)}
+    if(sw){sw.style.borderColor=tok?'rgba(255,255,255,.06)':'#3a2010';sw.setAttribute('onclick',`copyHex('${hex}')`);sw.setAttribute('title',`${hex} · Lum ${tlv}%`)}
     if(swc)swc.style.background=hex;
     if(swg)swg.style.background=gray(hex);
   });
@@ -958,7 +1061,7 @@ function patchTempRow(zKey){
     const sw=document.getElementById(`tgsw-${tKey}-${zKey}`);
     const swc=document.getElementById(`tgsw-color-${tKey}-${zKey}`);
     const swg=document.getElementById(`tgsw-gray-${tKey}-${zKey}`);
-    if(sw){sw.style.borderColor=tok?'rgba(255,255,255,.06)':'#3a2010';sw.setAttribute('onclick',`copyHex('${hex}')`);sw.setAttribute('title',`${hex} · Lum ${tlv}% · click`)}
+    if(sw){sw.style.borderColor=tok?'rgba(255,255,255,.06)':'#3a2010';sw.setAttribute('onclick',`copyHex('${hex}')`);sw.setAttribute('title',`${hex} · Lum ${tlv}%`)}
     if(swc)swc.style.background=hex;
     if(swg)swg.style.background=gray(hex);
   });
@@ -975,19 +1078,19 @@ function updTempHue(key,val){
   const hd=document.getElementById('tcol-desc-'+key);
   if(hc||hd){
     const c=tempClass(val);
-    if(hc)hc.textContent=(key==='accent'?'Acento':c.label);
-    if(hd)hd.textContent=(key==='accent'?c.temp+' · complementario':c.desc);
+    if(hc)hc.textContent=(key==='accent'?t('temp.accent'):c.label);
+    if(hd)hd.textContent=(key==='accent'?c.temp+' · '+t('temp.complementary'):c.desc);
   }
   patchTempCol(key);
 }
 
 function copyHex(hex){
-  navigator.clipboard.writeText(hex).then(()=>toast('Copiado: '+hex.toUpperCase()));
+  navigator.clipboard.writeText(hex).then(()=>toast(t('toast.copied')+': '+hex.toUpperCase()));
 }
 
 /* ══ PALETTE ══ */
 function renderPalette(){
-  const all=ZONE_DEFS.map(zd=>{const z=ev[zd.key];return{hex:hsl2hex(z.h,z.s,z.l),zone:zd.key,name:zd.name}});
+  const all=ZONE_DEFS.map(zd=>{const z=ev[zd.key];return{hex:hsl2hex(z.h,z.s,z.l),zone:zd.key,name:zn(zd)}});
   const wrap=document.getElementById('pal-wrap');
   const scene=document.getElementById('prev-scene');
   wrap.innerHTML=`<div class="pal-full">${all.map(c=>`
@@ -996,12 +1099,12 @@ function renderPalette(){
     </div>`).join('')}</div>`;
   const[sh,md,lt]=all;
   scene.innerHTML=`
-    <div style="flex:1;background:${sh.hex};display:flex;align-items:flex-end;padding:8px"><span class="psl" style="color:${cc(sh.hex)}">Sombra</span></div>
+    <div style="flex:1;background:${sh.hex};display:flex;align-items:flex-end;padding:8px"><span class="psl" style="color:${cc(sh.hex)}">${t('prev.shadow')}</span></div>
     <div style="flex:2;background:${md.hex};display:flex;flex-direction:column;justify-content:center;padding:10px">
-      <div style="font-family:'Archivo Black',sans-serif;font-size:16px;color:${cc(md.hex)}">Ilustración</div>
-      <div style="font-size:10px;color:${cc(md.hex)};opacity:.6;margin-top:3px">tono medio · color local</div>
+      <div style="font-family:'Archivo Black',sans-serif;font-size:16px;color:${cc(md.hex)}">${t('prev.illustration')}</div>
+      <div style="font-size:10px;color:${cc(md.hex)};opacity:.6;margin-top:3px">${t('prev.midLocal')}</div>
     </div>
-    <div style="flex:1;background:${lt.hex};display:flex;align-items:flex-start;padding:8px"><span class="psl" style="color:${cc(lt.hex)}">Luz</span></div>`;
+    <div style="flex:1;background:${lt.hex};display:flex;align-items:flex-start;padding:8px"><span class="psl" style="color:${cc(lt.hex)}">${t('prev.light')}</span></div>`;
 }
 
 /* ══ COPY SVG ══ */
@@ -1043,13 +1146,13 @@ function copySVG(){
       svg+=`<text x="${x+sz/2}" y="${y+sz+16}" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" font-weight="bold">${hex.toUpperCase()}</text>`;
       // zone label only on first column
       if(ci===0){
-        svg+=`<text x="${x+sz/2}" y="${y+sz+28}" text-anchor="middle" font-family="monospace" font-size="8" fill="#ffffff" font-weight="bold">${zd.name}</text>`;
+        svg+=`<text x="${x+sz/2}" y="${y+sz+28}" text-anchor="middle" font-family="monospace" font-size="8" fill="#ffffff" font-weight="bold">${zn(zd)}</text>`;
       }
     });
   });
 
   svg+=`</svg>`;
-  navigator.clipboard.writeText(svg).then(()=>toast('SVG copiado — pega en Illustrator / Figma'));
+  navigator.clipboard.writeText(svg).then(()=>toast(t('toast.svgCopied')));
 }
 
 /* ══ INPUTS ══ */
@@ -1109,25 +1212,25 @@ document.getElementById('sl-l').addEventListener('input',function(){L=+this.valu
 /* ══ SAVE ══ */
 function savePalette(){
   const snap=JSON.parse(JSON.stringify(ev));
-  savedPalettes.push({name:'Paleta '+(savedPalettes.length+1),ev:snap});
+  savedPalettes.push({name:t('palette.name')+' '+(savedPalettes.length+1),ev:snap});
   const cont=document.getElementById('saved-wrap');
   cont.innerHTML=savedPalettes.map((p,i)=>{
     const dots=ZONE_DEFS.map(zd=>{const z=p.ev[zd.key];return`<div style="width:13px;height:13px;border-radius:3px;background:${hsl2hex(z.h,z.s,z.l)}"></div>`}).join('');
     return`<div class="sv-item" onclick="loadSaved(${i})"><div style="display:flex;gap:2px">${dots}</div><span style="font-size:11px;color:var(--text);flex:1">${p.name}</span></div>`;
   }).join('');
-  toast('Paleta guardada');
+  toast(t('toast.paletteSaved'));
 }
 function loadSaved(i){
   ev=JSON.parse(JSON.stringify(savedPalettes[i].ev));
   renderZones();renderTonalCheck();renderTempGrid();renderPalette();
-  toast('Cargada: '+savedPalettes[i].name);
+  toast(t('toast.loaded')+': '+savedPalettes[i].name);
 }
 
 /* ══ EXPORT ══ */
-function getAll(){return ZONE_DEFS.map(zd=>{const z=ev[zd.key];return{hex:hsl2hex(z.h,z.s,z.l),name:zd.name}})}
-function exportHex(){navigator.clipboard.writeText(getAll().map(c=>c.hex.toUpperCase()).join(', ')).then(()=>toast('HEX copiados'))}
-function exportCSS(){navigator.clipboard.writeText(`:root {\n${getAll().map(c=>`  --${c.name.toLowerCase().replace(/\s/g,'-')}: ${c.hex.toUpperCase()};`).join('\n')}\n}`).then(()=>toast('CSS copiado'))}
-function exportJSON(){navigator.clipboard.writeText(JSON.stringify(Object.fromEntries(ZONE_DEFS.map(zd=>{const z=ev[zd.key];return[zd.key,{hex:hsl2hex(z.h,z.s,z.l).toUpperCase(),luminance:lumPct(hsl2hex(z.h,z.s,z.l))}]})),null,2)).then(()=>toast('JSON copiado'))}
+function getAll(){return ZONE_DEFS.map(zd=>{const z=ev[zd.key];return{hex:hsl2hex(z.h,z.s,z.l),name:zn(zd)}})}
+function exportHex(){navigator.clipboard.writeText(getAll().map(c=>c.hex.toUpperCase()).join(', ')).then(()=>toast(t('toast.hexCopied')))}
+function exportCSS(){navigator.clipboard.writeText(`:root {\n${getAll().map(c=>`  --${c.name.toLowerCase().replace(/\s/g,'-')}: ${c.hex.toUpperCase()};`).join('\n')}\n}`).then(()=>toast(t('toast.cssCopied')))}
+function exportJSON(){navigator.clipboard.writeText(JSON.stringify(Object.fromEntries(ZONE_DEFS.map(zd=>{const z=ev[zd.key];return[zd.key,{hex:hsl2hex(z.h,z.s,z.l).toUpperCase(),luminance:lumPct(hsl2hex(z.h,z.s,z.l))}]})),null,2)).then(()=>toast(t('toast.jsonCopied')))}
 function exportASE(){
   const all=getAll();
   const blocks=all.map(c=>{
@@ -1142,7 +1245,7 @@ function exportASE(){
   ase[0]=65;ase[1]=83;ase[2]=69;ase[3]=70;dv.setUint32(4,0x00010000);dv.setUint32(8,blocks.length);
   let off=12;blocks.forEach(b=>{ase.set(b,off);off+=b.length});
   const blob=new Blob([ase],{type:'application/octet-stream'});const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download='chroma.ase';a.click();URL.revokeObjectURL(url);toast('ASE descargado');
+  const a=document.createElement('a');a.href=url;a.download='chroma.ase';a.click();URL.revokeObjectURL(url);toast(t('toast.aseDownloaded'));
 }
 
 /* ══ updateVslThumbs ══ replaced — old vertical sliders removed.
@@ -1157,6 +1260,7 @@ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t
 /* ══ INIT ══ */
 seedTempHues();
 syncAll();
+applyLang();
 requestAnimationFrame(updateVslThumbs);
 
 
